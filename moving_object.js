@@ -2,7 +2,7 @@ var MovingObjects = (function () {
 
   function MovingObject(centerX,centerY,radius) {
     this.centerX = centerX;
-    this.centerY = cetnerY;
+    this.centerY = centerY;
     this.radius = radius
   };
 
@@ -28,6 +28,10 @@ var MovingObjects = (function () {
       (this.centerY + this.radius) < 0
     )
 
-  }
+  };
+
+  return {
+    MovingObject: MovingObject
+  };
 
 })();
