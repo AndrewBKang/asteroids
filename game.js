@@ -42,6 +42,11 @@ Game.prototype.draw = function (canvasEl) {
 
 Game.prototype.update = function () {
   var that = this;
+  that.ship.velocity.x += that.ship.acceleration.x
+  that.ship.velocity.y -= that.ship.acceleration.y
+
+  that.ship.angle += that.ship.angularVelocity
+
   var updateShip = function () {
     that.ship.update(that.ship.velocity.x, that.ship.velocity.y);
   }

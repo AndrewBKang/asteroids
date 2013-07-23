@@ -6,12 +6,24 @@ var Ship = function (game) {
   this.game = game;
   this.angle = 0;
   this.velocity = { x:0, y:0 }
+  this.acceleration = { x:0, y:0 }
+  this.angularVelocity = 0
+
   var that = this;
-  key('left', function(){ that.angle -= (Math.PI/3)/5  });
-  key('right', function(){ that.angle += (Math.PI/3)/5 });
+  key('left', function(){ that.angularVelocity = -(Math.PI/3)/5  });
+
+  key('right', function(){ that.angularVelocity = (Math.PI/3)/5 });
+
   key('up', function(){
-    that.velocity.y -= Math.cos(that.angle) * 0.2;
-    that.velocity.x += Math.sin(that.angle) * 0.2;
+    that.acceleration.y = Math.cos(that.angle) * .2;
+    that.acceleration.x = Math.sin(that.angle) * .2;
+  });
+
+  keyup('right', function(){ that.angularVelocity = 0 });
+  keyup('left', function(){ that.angularVelocity = 0 });
+  keyup('up', function(){
+    that.acceleration.y = 0;
+    that.acceleration.x = 0;
   });
 }
 
@@ -36,5 +48,10 @@ Ship.prototype.render = function (ctx) {
   ctx.stroke();
 
   ctx.restore();
+};
 
-}
+// Ship.prototype.isHit = function () {
+//
+//
+//   _.each(this.game.asteroids, )
+// }
