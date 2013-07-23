@@ -19,17 +19,17 @@ var MovingObjects = (function () {
     this.centerX = (this.centerX + deltaX);
     if (this.offScreen(500, 500)) {
       if (this.offScreen(500, 500) === "positive") {
-        this.centerX = (this.centerX % 500) * -1
+        this.centerX = (this.centerX - 500) * -1 + 1
       } else {
-        this.centerX = (this.centerX * -1) + 500
+        this.centerX = (this.centerX * -1) + 500 - 1
       }
     }
     this.centerY = (this.centerY + deltaY);
     if (this.offScreen(500, 500)) {
       if (this.offScreen(500, 500) === "positive") {
-        this.centerY = (this.centerY % 500) * -1
+        this.centerY = (this.centerY - 500) * -1 + 1
       } else {
-        this.centerY = (this.centerY * -1) + 500
+        this.centerY = (this.centerY * -1) + 500 - 1
       }
     }
   };

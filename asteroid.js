@@ -5,15 +5,15 @@ Surrogate.prototype = MovingObjects.MovingObject.prototype;
 
 function Asteroid(screenX, screenY, radius, deltaX, deltaY, game) {
   MovingObjects.MovingObject.call(this, screenX, screenY, radius);
-  this.deltaX = deltaX
-  this.deltaY = deltaY
-  this.game = game
+  this.deltaX = deltaX;
+  this.deltaY = deltaY;
+  this.game = game;
   // function Asteroid(centerX,centerY) = {};
 
 };
 
 Asteroid.MAX_RADIUS = 25;
-Asteroid.MAX_VELOCITY = 3;
+Asteroid.MAX_VELOCITY = 2;
 Asteroid.randomAsteroid = function(screenX, screenY, game) {
   var yingYang = function() {
     return [-1,1][Math.floor(Math.random()*2)];

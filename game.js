@@ -2,6 +2,7 @@ var Game = function (screenX, screenY, numAsteroids) {
   this.screenX = screenX;
   this.screenY = screenY;
   this.asteroids = this.makeAsteroids(numAsteroids);
+  this.ship = new Ship(this);
 };
 
 Game.prototype.makeAsteroids = function (num) {
@@ -25,6 +26,7 @@ Game.prototype.render = function (ctx) {
   };
 
   _.each(this.asteroids, renderAsteroid);
+  this.ship.render(ctx);
 };
 
 Game.prototype.draw = function (canvasEl) {
@@ -39,10 +41,15 @@ Game.prototype.draw = function (canvasEl) {
 };
 
 Game.prototype.update = function () {
+  var that = this;
+  var updateShip = function () {
+    that.ship.update(that.ship.velocity.x, that.ship.velocity.y);
+  }
 
   var updateAsteroid = function (asteroid) {
     asteroid.update(asteroid.deltaX, asteroid.deltaY);
   };
 
   _.each(this.asteroids, updateAsteroid);
+  updateShip();
 };
