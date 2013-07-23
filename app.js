@@ -4,7 +4,6 @@ $(function () {
   $('body').append(canvas);
 
   // `canvas.get(0)` unwraps the jQuery'd DOM element;
-  var asteroid = MovingObjects.MovingObject.randomMovingObject(500,500)
+  new Game(500, 500, 10).draw(canvas.get(0));
 
-  console.log(asteroid)
 });
